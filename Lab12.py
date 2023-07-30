@@ -42,9 +42,20 @@ def power_w_deflate(A, tol=1e-6, max_iter=1000):
 # Test the functions
 A = np.array([[2, -1], [-1, 2]])
 eigval, eigvec = power(A)
-print("Dominant eigenpair from power method:", eigval, eigvec)
+print("Dominant eigenpair from power method (2x2):", eigval, eigvec)
 
 eigenvalues, eigenvectors = power_w_deflate(A)
-print("All eigenpairs from power method with deflation:")
+print("All eigenpairs from power method with deflation (2x2):")
+for i in range(len(eigenvalues)):
+    print(eigenvalues[i], eigenvectors[:, i])
+
+# Define a 3x3 symmetric positive definite matrix
+B = np.array([[4, 1, 1], [1, 3, 1], [1, 1, 2]])
+
+eigval, eigvec = power(B)
+print("\nDominant eigenpair from power method for 3x3 matrix:", eigval, eigvec)
+
+eigenvalues, eigenvectors = power_w_deflate(B)
+print("All eigenpairs from power method with deflation for 3x3 matrix:")
 for i in range(len(eigenvalues)):
     print(eigenvalues[i], eigenvectors[:, i])
